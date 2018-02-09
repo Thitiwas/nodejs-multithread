@@ -7,7 +7,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.post('/multiply', (request, response) => {
+app.post('/prime', (request, response) => {
   let data = request.body
   const thread = spawn(function (input, done) {
     done({operand: parseFloat(input.operand)})
@@ -20,24 +20,16 @@ app.post('/multiply', (request, response) => {
       var operand = data.operand
       var result = null
       var startDate = new Date ()
-      if (operand===1)
-      {
-        result = false;
-      }
-      else if(operand === 2)
-      {
-        result = true;
-      }else
-      {
-        for(var x = 2; x < operand; x++)
-        {
-          if(operand % x === 0)
-          {
-            result = false;
-          }
+      if ( operand == 1 || operand == 2 ) {
+			     result = true;
+  		}
+  		for ( var i = 2; i < operand; i++ ) {
+  			if ( operand % i == 0 ) {
+  				result = false;
+  			} else {
+          result = true;
         }
-        result = true;
-      }
+  		}
       var endDate   = new Date()
       var seconds = (endDate.getTime() - startDate.getTime())/ 1000
       response.status(200).send('Result ' + result +' time ' + seconds)
