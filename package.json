@@ -3,8 +3,12 @@
   "main": "thread.js",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "decimal.js": "^9.0.1",
     "express": "^4.16.2",
     "threads": "^0.10.1"
+  },
+  "scripts": {
+    "start": "nodemon thread"
   },
   "devDependencies": {
     "eslint": "^4.15.0",
